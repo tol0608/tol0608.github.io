@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/redux/allactions.ts","./src/components/redux/rootreducer.ts","./src/pages/home.tsx","./src/routes/router.tsx","./src/styles/globalstyle.ts","./src/styles/theme.ts","./src/styles/layouts/mainlayout.styles.ts"],"errors":true,"version":"5.6.3"}
