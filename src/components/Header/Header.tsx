@@ -10,7 +10,7 @@ const Header = () => {
         transition={{ duration: 0.8, delay: 0.5 }}
       >
         <HeaderText>
-          잎새달 스무이레에 만나 <br/>
+          잎새달 스무이레에 만나
           미틈달 아흐레에 하나가 되다
         </HeaderText>
       </motion.div>
@@ -20,7 +20,7 @@ const Header = () => {
 
 const HeaderWrapper = styled.header`
   width: 100%;
-  max-width: 768px;
+  max-width: 600px;
   margin: 0 auto;
   background-color: #fff;
   text-align: center;
@@ -33,7 +33,7 @@ const HeaderWrapper = styled.header`
 
 const HeaderText = styled.h1`
   font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: #333;
   font-weight: 400;
@@ -41,10 +41,10 @@ const HeaderText = styled.h1`
   word-break: keep-all;
   padding: 0 20px;
   
-  br {
-    @media (min-width: 768px) {
-      display: none;
-    }
+
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
   }
 `;
 

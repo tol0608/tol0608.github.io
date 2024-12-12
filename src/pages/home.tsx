@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import mainImage from "../assets/img/IMG_3608.jpeg";
+import mainImage from "../assets/img/IMG_3613.jpeg";
 import Calendar from '../components/Calendar/Calendar';
 import Location from '../components/Location/Location';
 import Account from '../components/Account/Account';
-import Header from '../components/Header/Header';
+import Gallery from '../components/Gallery/Gallery';
 
 const Home = () => {
   return (
@@ -17,18 +17,20 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
+            className="main-image"
           />
         </ImageFrame>
       </MainImage>
 
-      <TitleSection>
+      <TitleSection >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <SubTitle>WEDDING INVITATION</SubTitle>
-          <Names>신랑 · 신부</Names>
+          {/* <Relation>신랑  신부</Relation> */}
+          <Names>이재현 · 허정현</Names>
           <Date>2025. 11. 9. SUNDAY PM 1:00</Date>
           <LocationView>W웨딩 더에스웨딩홀</LocationView>
         </motion.div>
@@ -49,6 +51,7 @@ const Home = () => {
         </motion.p>
       </IntroSection>
 
+      <Gallery />
       <Calendar />
       <Location />
       <Account />
@@ -58,7 +61,7 @@ const Home = () => {
 
 const Container = styled.div`
   width: 100%;
-  max-width: 768px;
+  max-width: 568px;
   margin: 0 auto;
   overflow-y: auto;
   background-color: #fff;
@@ -69,6 +72,7 @@ const MainImage = styled.div`
   height: 40vh;
   position: relative;
   background-color: #fff;
+  margin-bottom: 100px;
   
   &::after {
     content: '';
@@ -77,19 +81,37 @@ const MainImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff;
-    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.9) 5%,
+      rgba(255, 255, 255, 0.7) 10%,
+      rgba(255, 255, 255, 0.5) 15%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0) 25%,
+      rgba(255, 255, 255, 0) 75%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0.5) 85%,
+      rgba(255, 255, 255, 0.7) 90%,
+      rgba(255, 255, 255, 0.9) 95%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    z-index: 3;
+  }
+
+  @media (max-width: 768px) {
+    height: 70vh;
   }
 `;
 
 const ImageFrame = styled.div`
-  width: 100%;
+  width: calc(100% - 20px);
   height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 50% 50% 0 0;
   border: 1px solid #eaeaea;
   z-index: 2;
+  margin: 0 auto;
   
   img {
     width: 100%;
@@ -113,6 +135,13 @@ const SubTitle = styled.h2`
   letter-spacing: 2px;
   color: #666;
   margin-bottom: 20px;
+`;
+
+const Relation = styled.h2`
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-family: 'Nanum Myeongjo', serif;
 `;
 
 const Names = styled.h1`

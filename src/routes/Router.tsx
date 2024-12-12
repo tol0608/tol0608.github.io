@@ -3,16 +3,16 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
 } from "react-router-dom";
 import Home from "../pages/home";
 import {
   MainContainer,
   ContentWrapper,
-  SafeArea    ,
+  SafeArea,
 } from "../styles/layouts/MainLayout.styles";
 import Header from "../components/Header/Header";
-
+import FloatingButton from "../components/FloatingButton/FloatingButton";
+import Footer from "../components/Footer/Footer";
 declare global {
   interface Window {
     ReactNativeWebView: {
@@ -22,8 +22,6 @@ declare global {
 }
 
 const MainLayout = () => {
-  const location = useLocation();
-
   return (
     <MainContainer>
       <SafeArea>
@@ -33,7 +31,10 @@ const MainLayout = () => {
             <Route path="/" element={<Home />} />
           </Routes>
         </ContentWrapper>
+        <FloatingButton />
+        <Footer />
       </SafeArea>
+
     </MainContainer>
   );
 };

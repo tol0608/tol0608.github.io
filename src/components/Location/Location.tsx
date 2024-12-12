@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
 
 const Location = () => {
   const [ref, inView] = useInView({
@@ -26,6 +32,36 @@ const Location = () => {
     window.open('https://map.kakao.com/link/search/부산광역시 남구 전포대로 26 W웨딩 더에스웨딩홀');
   };
 
+  useEffect(() => {
+    const initializeMap = () => {
+      const mapOptions = {
+        center: new window.naver.maps.LatLng(35.139121, 129.067790), 
+        zoom: 17,
+        minZoom: 15,
+        zoomControl: false,
+        draggable: false,           // 드래그 비활성화
+        pinchZoom: false,           // 핀치 줌 비활성화
+        scrollWheel: false,         // 스크롤 줌 비활성화
+        keyboardShortcuts: false,   // 키보드 컨트롤 비활성화
+        disableDoubleTapZoom: true, // 더블탭 줌 비활성화
+        disableDoubleClickZoom: true, // 더블클릭 줌 비활성화
+        disableTwoFingerTapZoom: true // 두 손가락 탭 줌 비활성화
+      };
+
+      const map = new window.naver.maps.Map('map', mapOptions);
+      
+      // 마커 위치도 동일한 좌표로 수정
+      new window.naver.maps.Marker({
+        position: new window.naver.maps.LatLng(35.139121, 129.067790), 
+        map: map
+      });
+    };
+
+    if (window.naver && window.naver.maps) {
+      initializeMap();
+    }
+  }, []);
+
   return (
     <Section ref={ref}>
       <motion.div
@@ -35,28 +71,8 @@ const Location = () => {
       >
         <Title>오시는 길</Title>
         
-        {/* <MapContainer>
-          <Map
-            center={{ lat: 35.1468, lng: 129.0657 }}
-            style={{ width: '100%', height: '300px' }}
-            level={3}
-          >
-            <MapMarker 
-              position={{ lat: 35.1468, lng: 129.0657 }}
-              image={{
-                src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
-                size: { width: 64, height: 69 },
-                options: {
-                  offset: {
-                    x: 27,
-                    y: 69,
-                  },
-                },
-              }}
-            />
-          </Map>
-        </MapContainer> */}
-
+        <MapContainer id="map" />
+        
         <VenueInfo>
           <VenueName>W웨딩 더에스웨딩홀</VenueName>
           <Address>
@@ -136,6 +152,7 @@ const Title = styled.h2`
 
 const MapContainer = styled.div`
   width: 100%;
+  height: 300px;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 30px;
