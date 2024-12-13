@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,7 +12,9 @@ import {
 } from "../styles/layouts/MainLayout.styles";
 import Header from "../components/Header/Header";
 import FloatingButton from "../components/FloatingButton/FloatingButton";
+import Splash from "../components/Splash/Splash";
 import Footer from "../components/Footer/Footer";
+
 declare global {
   interface Window {
     ReactNativeWebView: {
@@ -22,8 +24,15 @@ declare global {
 }
 
 const MainLayout = () => {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
   return (
     <MainContainer>
+      {showSplash && <Splash onComplete={handleSplashComplete} />}
       <SafeArea>
         <Header/>
         <ContentWrapper>
