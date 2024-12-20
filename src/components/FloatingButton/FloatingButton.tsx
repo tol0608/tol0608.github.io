@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { useEffect } from 'react';
-import ShareIcon from '@mui/icons-material/Share';
-import Image from '../../assets/img/IMG_3613.jpeg';
+import styled from "styled-components";
+import { useEffect } from "react";
+import ShareIcon from "@mui/icons-material/Share";
+import Image from "../../assets/img/IMG_3613.jpeg";
 
 declare global {
   interface Window {
@@ -12,17 +12,17 @@ declare global {
 const FloatingButton = () => {
   useEffect(() => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
-      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+      window.Kakao.init(import.meta.env.VITE_KAKAO_JS_API_KEY);
     }
   }, []);
 
   const handleShareKakao = () => {
     if (window.Kakao) {
       window.Kakao.Share.sendDefault({
-        objectType: 'feed',
+        objectType: "feed",
         content: {
-          title: '이재현 · 허정현의 결혼식에 초대합니다',
-          description: '2025년 11월 9일 일요일 오후 1시\nW웨딩 더에스웨딩홀',
+          title: "이재현 · 허정현의 결혼식에 초대합니다",
+          description: "2025년 11월 9일 일요일 오후 1시\nW웨딩 더에스웨딩홀",
           imageUrl: Image,
           link: {
             mobileWebUrl: window.location.href,
@@ -31,7 +31,7 @@ const FloatingButton = () => {
         },
         buttons: [
           {
-            title: '청첩장 보기',
+            title: "청첩장 보기",
             link: {
               mobileWebUrl: window.location.href,
               webUrl: window.location.href,
@@ -56,7 +56,7 @@ const FloatingButtonWrapper = styled.button`
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #FEE500;
+  background-color: #fee500;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -68,7 +68,7 @@ const FloatingButtonWrapper = styled.button`
   color: #000000;
 
   &:hover {
-    background-color: #FDD700;
+    background-color: #fdd700;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
@@ -83,4 +83,4 @@ const FloatingButtonWrapper = styled.button`
   }
 `;
 
-export default FloatingButton; 
+export default FloatingButton;
