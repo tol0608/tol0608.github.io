@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef, useCallback } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -24,14 +24,31 @@ const images = [
   { id: 8, src: galleryImage8, alt: '웨딩 사진 8' },
 ];
 
-const Gallery = () => {
-  const [ref, inView] = useInView({
+interface GalleryProps {
+  ref?: React.RefObject<HTMLElement>;
+}
+
+const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
+  const [showAll, setShowAll] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [inViewRef, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
 
-  const [showAll, setShowAll] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  // ref 병합을 위한 콜백
+  const setRefs = useCallback(
+    (node: HTMLElement | null) => {
+      // React.ForwardedRef는 함수일 수도 있으므로 체크
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+      inViewRef(node);
+    },
+    [inViewRef, ref]
+  );
   
   const visibleImages = showAll ? images : images.slice(0, 4);
 
@@ -46,7 +63,7 @@ const Gallery = () => {
   };
 
   return (
-    <Section ref={ref}>
+    <Section ref={setRefs}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -101,7 +118,9 @@ const Gallery = () => {
       </motion.div>
     </Section>
   );
-};
+});
+
+Gallery.displayName = 'Gallery';
 
 const Section = styled.section`
   padding: 80px 20px;

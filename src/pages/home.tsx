@@ -6,10 +6,16 @@ import Location from "../components/Location/Location";
 import Account from "../components/Account/Account";
 import Gallery from "../components/Gallery/Gallery";
 import Guestbook from "../components/Guestbook/Guestbook";
+import HorizontalScroll from "../components/HorizontalScroll/HorizontalScroll";
+import { useRef } from "react";
 
 const Home = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
   return (
-    <Container>
+    <Container ref={containerRef}>
       <MainImage>
         <ImageFrame>
           <motion.img
@@ -37,7 +43,7 @@ const Home = () => {
         </motion.div>
       </TitleSection>
 
-      <IntroSection>
+      <IntroSection ref={introRef}>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -57,7 +63,13 @@ const Home = () => {
         </motion.p>
       </IntroSection>
 
-      <Gallery />
+      <HorizontalScroll 
+        triggerElement={introRef}
+        endElement={galleryRef}
+        containerRef={containerRef}
+      />
+
+      <Gallery ref={galleryRef}/>
       <Calendar />
       <Location />
       <Guestbook />
@@ -70,8 +82,11 @@ const Container = styled.div`
   width: 100%;
   max-width: 568px;
   margin: 0 auto;
-  overflow-y: auto;
   background-color: #fff;
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const MainImage = styled.div`

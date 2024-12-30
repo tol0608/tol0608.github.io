@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node --loader ts-node/esm index.ts",
-    "dev": "nodemon --exec node --loader ts-node/esm index.ts"
+     "start": "nodemon --exec ts-node server/server.ts",
+    "dev": "nodemon --exec node --loader ts-node/esm index.ts",
+    "build": "tsc",
+    "server": "ts-node server/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +20,9 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.11.16",
-    "nodemon": "^3.0.3",
+    "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.7.2"
   }
 }
