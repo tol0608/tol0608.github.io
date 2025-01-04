@@ -206,9 +206,11 @@ const Guestbook = () => {
             </Pagination>
           )}
 
-          <WriteButton onClick={() => setIsWriting(true)}>
-            방명록 남기기
-          </WriteButton>
+          <ButtonContainer>
+            <WriteButton onClick={() => setIsWriting(true)}>
+              방명록 남기기
+            </WriteButton>
+          </ButtonContainer>
         </>
       ) : (
         <GuestbookForm onSubmit={handleSubmit}>
@@ -356,9 +358,9 @@ const EntryHeader = styled.div`
 `;
 
 const EntryName = styled.span`
-  font-weight: 500;
+  font-weight: 400;
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const EntryDate = styled.span`
@@ -369,17 +371,26 @@ const EntryDate = styled.span`
 const EntryMessage = styled.p`
   white-space: pre-wrap;
   line-height: 1.5;
+  font-size: 1.1rem;
+  color: #333;
+`;
+
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const WriteButton = styled.button`
-  width: 100%;
+  width: 30%;
   padding: 0.8rem;
   background-color: #4a90e2;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
+  margin: 0 auto;
   &:hover {
     background-color: #357abd;
   }
