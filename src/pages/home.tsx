@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import mainImage from "../assets/img/IMG_3613.jpeg";
+import mainImage from "../assets/img/gallery/sero9.jpg";
 import Calendar from "../components/Calendar/Calendar";
 import Location from "../components/Location/Location";
 import Account from "../components/Account/Account";
 import Gallery from "../components/Gallery/Gallery";
-import Guestbook from "../components/Guestbook/Guestbook";
-import HorizontalScroll from "../components/HorizontalScroll/HorizontalScroll";
+// 방명록 서버 연동 예정
+// import Guestbook from "../components/Guestbook/Guestbook";
+// 스크롤 이미지 추가 고민중
+// import HorizontalScroll from "../components/HorizontalScroll/HorizontalScroll";
 import { useRef } from "react";
+// import ScrollReveal from "../components/HorizontalScroll/ScrollReveal";
 
 const Home = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +31,6 @@ const Home = () => {
           />
         </ImageFrame>
       </MainImage>
-
       <TitleSection>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +44,6 @@ const Home = () => {
           <LocationView>W웨딩 더에스웨딩홀</LocationView>
         </motion.div>
       </TitleSection>
-
       <IntroSection ref={introRef}>
         <motion.p
           initial={{ opacity: 0 }}
@@ -62,17 +63,31 @@ const Home = () => {
           앞날을 축복해 주시면 감사하겠습니다.
         </motion.p>
       </IntroSection>
-
-      <HorizontalScroll 
+      {/* <HorizontalScroll 
         triggerElement={introRef}
         endElement={galleryRef}
         containerRef={containerRef}
-      />
-
-      <Gallery ref={galleryRef}/>
+      /> */}
+      {/* todo : 스크롤 텍스트 영역 다듬기 */}
+      {/* <ScrollTextSection>
+        <ScrollReveal
+          scrollContainerRef={containerRef}
+          baseOpacity={0}
+          enableBlur={true}
+          baseRotation={5}
+          blurStrength={10}
+          containerClassName="story-container"
+          textClassName="story-text"
+        >
+          Our Story 처음 만난 날부터 지금까지 The Proposal 서로를 향한 약속 Our
+          Future 함께할 미래
+        </ScrollReveal>
+      </ScrollTextSection> */}
+      <Gallery ref={galleryRef} />
       <Calendar />
       <Location />
-      <Guestbook />
+      {/* 방명록 서버 연동 예정  */}
+      {/* <Guestbook /> */}
       <Account />
     </Container>
   );
@@ -91,7 +106,7 @@ const Container = styled.div`
 
 const MainImage = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 50vh;
   position: relative;
   background-color: #fff;
   margin-bottom: 100px;
@@ -108,6 +123,13 @@ const MainImage = styled.div`
       rgba(255, 255, 255, 1) 0%,
       rgba(255, 255, 255, 0.9) 5%,
       rgba(255, 255, 255, 0.7) 10%,
+      rgba(255, 255, 255, 0) 25%
+    );
+    /* background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.9) 5%,
+      rgba(255, 255, 255, 0.7) 10%,
       rgba(255, 255, 255, 0.5) 15%,
       rgba(255, 255, 255, 0.2) 20%,
       rgba(255, 255, 255, 0) 25%,
@@ -117,7 +139,7 @@ const MainImage = styled.div`
       rgba(255, 255, 255, 0.7) 90%,
       rgba(255, 255, 255, 0.9) 95%,
       rgba(255, 255, 255, 1) 100%
-    );
+    ); */
     z-index: 3;
   }
 
@@ -159,13 +181,6 @@ const SubTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Relation = styled.h2`
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 4px;
-  font-family: "Nanum Myeongjo", serif;
-`;
-
 const Names = styled.h1`
   font-size: 24px;
   font-weight: 500;
@@ -196,5 +211,17 @@ const IntroSection = styled.div`
     font-family: "Nanum Myeongjo", serif;
   }
 `;
+
+// 스크롤 텍스트 영역
+//
+// const ScrollTextSection = styled.div`
+//   padding: 60px 20px;
+//   text-align: center;
+//   background-color: #fff;
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
 export default Home;

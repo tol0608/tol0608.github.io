@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Modal } from "antd";
 
 interface AccountInfo {
   bankName: string;
@@ -13,7 +14,7 @@ interface AccountInfo {
 const Account = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const accounts: AccountInfo[] = [
@@ -21,19 +22,21 @@ const Account = () => {
       bankName: "부산은행",
       accountNumber: "112-2039-7904-03",
       accountHolder: "이재현",
-      relation: "신랑"
+      relation: "신랑",
     },
     {
-      bankName: "국민은행",
-      accountNumber: "123-45-6789",
+      bankName: "카카오뱅크",
+      accountNumber: "3333-07-9843576",
       accountHolder: "허정현",
-      relation: "신부"
-    }
+      relation: "신부",
+    },
   ];
 
   const handleCopyAccount = (account: string) => {
     navigator.clipboard.writeText(account);
-    alert('계좌번호가 복사되었습니다.');
+    Modal.success({
+      content: "계좌번호를 클립보드에 복사하였습니다.",
+    });
   };
 
   return (
@@ -44,7 +47,7 @@ const Account = () => {
         transition={{ duration: 0.8 }}
       >
         <Title>마음을 전하실 곳</Title>
-        
+
         <AccountList>
           {accounts.map((account, index) => (
             <AccountItem key={index}>
@@ -56,7 +59,7 @@ const Account = () => {
                 <BankName>{account.bankName}</BankName>
                 <AccountNumber>
                   {account.accountNumber}
-                  <CopyButton 
+                  <CopyButton
                     onClick={() => handleCopyAccount(account.accountNumber)}
                     aria-label="계좌번호 복사"
                   >
@@ -69,7 +72,8 @@ const Account = () => {
         </AccountList>
 
         <Notice>
-          참석이 어려우신 분들을 위해<br />
+          참석이 어려우신 분들을 위해
+          <br />
           계좌번호를 기재하였습니다.
         </Notice>
       </motion.div>
@@ -87,7 +91,7 @@ const Title = styled.h2`
   font-weight: 500;
   text-align: center;
   margin-bottom: 40px;
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
 `;
 
 const AccountList = styled.div`
@@ -149,7 +153,7 @@ const CopyButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  
+
   &:hover {
     color: #666;
   }
@@ -163,4 +167,4 @@ const Notice = styled.p`
   line-height: 1.6;
 `;
 
-export default Account; 
+export default Account;

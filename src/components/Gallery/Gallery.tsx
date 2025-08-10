@@ -1,27 +1,41 @@
-import { useState, forwardRef, useCallback } from 'react';
-import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import CloseIcon from '@mui/icons-material/Close';
-import galleryImage1 from "../../assets/img/gallery/gallery_1.jpeg";
-import galleryImage2 from "../../assets/img/gallery/gallery_2.jpeg";
-import galleryImage3 from "../../assets/img/gallery/gallery_3.jpeg";
-import galleryImage4 from "../../assets/img/gallery/gallery_4.jpeg";
-import galleryImage5 from "../../assets/img/gallery/gallery_5.jpeg";
-import galleryImage6 from "../../assets/img/gallery/gallery_6.jpeg";
-import galleryImage7 from "../../assets/img/gallery/gallery_7.jpeg";
-import galleryImage8 from "../../assets/img/gallery/gallery_8.jpeg";
+import { useState, forwardRef, useCallback, useRef, useEffect } from "react";
+import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+// import galleryImage1 from "../../assets/img/gallery/gallery_1.jpeg";
+// import galleryImage2 from "../../assets/img/gallery/gallery_2.jpeg";
+// import galleryImage3 from "../../assets/img/gallery/gallery_3.jpeg";
+// import galleryImage4 from "../../assets/img/gallery/gallery_4.jpeg";
+// import galleryImage5 from "../../assets/img/gallery/gallery_5.jpeg";
+// import galleryImage6 from "../../assets/img/gallery/gallery_6.jpeg";
+// import galleryImage7 from "../../assets/img/gallery/gallery_7.jpeg";
+// import galleryImage8 from "../../assets/img/gallery/gallery_8.jpeg";
+import sero1 from "../../assets/img/gallery/sero1.jpg";
+import sero2 from "../../assets/img/gallery/sero2.jpg";
+import sero3 from "../../assets/img/gallery/sero3.jpg";
+import sero4 from "../../assets/img/gallery/sero4.jpg";
+import sero5 from "../../assets/img/gallery/sero5.jpg";
+import sero6 from "../../assets/img/gallery/sero6.jpg";
+import sero7 from "../../assets/img/gallery/sero7.jpg";
+import sero8 from "../../assets/img/gallery/sero8.jpg";
+import sero9 from "../../assets/img/gallery/sero9.jpg";
+import sero10 from "../../assets/img/gallery/sero10.jpg";
 
 // 이미지 목록 (실제 이미지 경로로 교체 필요)
 const images = [
-  { id: 1, src: galleryImage1, alt: '웨딩 사진 1' },
-  { id: 2, src: galleryImage2, alt: '웨딩 사진 2' },
-  { id: 3, src: galleryImage3, alt: '웨딩 사진 3' },
-  { id: 4, src: galleryImage4, alt: '웨딩 사진 4' },
-  { id: 5, src: galleryImage5, alt: '웨딩 사진 5' },
-  { id: 6, src: galleryImage6, alt: '웨딩 사진 6' },
-  { id: 7, src: galleryImage7, alt: '웨딩 사진 7' },
-  { id: 8, src: galleryImage8, alt: '웨딩 사진 8' },
+  { id: 1, src: sero1, alt: "웨딩 사진 1" },
+  { id: 2, src: sero2, alt: "웨딩 사진 2" },
+  { id: 3, src: sero3, alt: "웨딩 사진 3" },
+  { id: 4, src: sero4, alt: "웨딩 사진 4" },
+  { id: 5, src: sero5, alt: "웨딩 사진 5" },
+  { id: 6, src: sero6, alt: "웨딩 사진 6" },
+  { id: 7, src: sero7, alt: "웨딩 사진 7" },
+  { id: 8, src: sero8, alt: "웨딩 사진 8" },
+  { id: 9, src: sero9, alt: "웨딩 사진 9" },
+  { id: 10, src: sero10, alt: "웨딩 사진 10" },
 ];
 
 interface GalleryProps {
@@ -30,17 +44,25 @@ interface GalleryProps {
 
 const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
   const [showAll, setShowAll] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
   const [inViewRef, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
+
+  // 스와이프 관련 상태
+  const [dragStart, setDragStart] = useState<number>(0);
+  const [dragOffset, setDragOffset] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   // ref 병합을 위한 콜백
   const setRefs = useCallback(
     (node: HTMLElement | null) => {
       // React.ForwardedRef는 함수일 수도 있으므로 체크
-      if (typeof ref === 'function') {
+      if (typeof ref === "function") {
         ref(node);
       } else if (ref) {
         ref.current = node;
@@ -49,17 +71,78 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
     },
     [inViewRef, ref]
   );
-  
+
   const visibleImages = showAll ? images : images.slice(0, 4);
 
-  const handleImageClick = (src: string) => {
-    setSelectedImage(src);
-    document.body.style.overflow = 'hidden';
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+    document.body.style.overflow = "hidden";
   };
 
   const handleCloseModal = () => {
-    setSelectedImage(null);
-    document.body.style.overflow = 'auto';
+    setSelectedImageIndex(null);
+    setDragOffset(0);
+    document.body.style.overflow = "auto";
+  };
+
+  const goToNext = () => {
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % images.length);
+    }
+  };
+
+  const goToPrev = () => {
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(
+        selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1
+      );
+    }
+  };
+
+  // 키보드 이벤트 처리
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImageIndex !== null) {
+        if (e.key === "ArrowRight") {
+          goToNext();
+        } else if (e.key === "ArrowLeft") {
+          goToPrev();
+        } else if (e.key === "Escape") {
+          handleCloseModal();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex]);
+
+  // 터치/마우스 이벤트 처리
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    setDragStart(clientX);
+    setIsDragging(true);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const offset = clientX - dragStart;
+    setDragOffset(offset);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    if (Math.abs(dragOffset) > 50) {
+      if (dragOffset > 0) {
+        goToPrev();
+      } else {
+        goToNext();
+      }
+    }
+    setDragOffset(0);
   };
 
   return (
@@ -70,13 +153,13 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
         transition={{ duration: 0.8 }}
       >
         <Title>우리의 아름다운 순간</Title>
-        
+
         <GridContainer>
           {visibleImages.map((image, index) => (
-            <GridItem 
-              key={image.id} 
+            <GridItem
+              key={image.id}
               $isEven={index % 2 === 0}
-              onClick={() => handleImageClick(image.src)}
+              onClick={() => handleImageClick(index)}
             >
               <motion.img
                 src={image.src}
@@ -89,28 +172,66 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
         </GridContainer>
 
         {!showAll && images.length > 6 ? (
-          <MoreButton onClick={() => setShowAll(true)}>
-            더보기
-          </MoreButton>
+          <MoreButton onClick={() => setShowAll(true)}>더보기</MoreButton>
         ) : (
-          <MoreButton onClick={() => setShowAll(false)}>
-            접기
-          </MoreButton>
+          <MoreButton onClick={() => setShowAll(false)}>접기</MoreButton>
         )}
 
         <AnimatePresence>
-          {selectedImage && (
+          {selectedImageIndex !== null && (
             <Modal
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleCloseModal}
             >
-              <ModalContent onClick={e => e.stopPropagation()}>
+              <ModalContent
+                ref={modalRef}
+                onClick={(e) => e.stopPropagation()}
+                onMouseDown={handleDragStart}
+                onMouseMove={handleDragMove}
+                onMouseUp={handleDragEnd}
+                onMouseLeave={handleDragEnd}
+                onTouchStart={handleDragStart}
+                onTouchMove={handleDragMove}
+                onTouchEnd={handleDragEnd}
+                style={{
+                  transform: `translateX(${dragOffset}px)`,
+                  transition: isDragging ? "none" : "transform 0.3s ease-out",
+                }}
+              >
                 <CloseButton onClick={handleCloseModal}>
                   <CloseIcon />
                 </CloseButton>
-                <ModalImage src={selectedImage} alt="확대된 이미지" />
+
+                <NavigationButton
+                  $direction="left"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToPrev();
+                  }}
+                >
+                  <ArrowBackIosIcon />
+                </NavigationButton>
+
+                <NavigationButton
+                  $direction="right"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToNext();
+                  }}
+                >
+                  <ArrowForwardIosIcon />
+                </NavigationButton>
+
+                <ModalImage
+                  src={images[selectedImageIndex].src}
+                  alt={images[selectedImageIndex].alt}
+                />
+
+                <ImageCounter>
+                  {selectedImageIndex + 1} / {images.length}
+                </ImageCounter>
               </ModalContent>
             </Modal>
           )}
@@ -120,7 +241,7 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
   );
 });
 
-Gallery.displayName = 'Gallery';
+Gallery.displayName = "Gallery";
 
 const Section = styled.section`
   padding: 80px 20px;
@@ -132,7 +253,7 @@ const Title = styled.h2`
   font-weight: 500;
   text-align: center;
   margin-bottom: 40px;
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
 `;
 
 const GridContainer = styled.div`
@@ -148,7 +269,7 @@ const GridItem = styled.div<{ $isEven: boolean }>`
   width: 100%;
   height: 100%;
   cursor: pointer;
-  margin-top: ${({ $isEven }) => $isEven ? '0' : '24px'};
+  margin-top: ${({ $isEven }) => ($isEven ? "0" : "24px")};
 
   img {
     width: 100%;
@@ -194,12 +315,19 @@ const ModalContent = styled.div`
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 `;
 
 const ModalImage = styled.img`
   max-width: 100%;
   max-height: 90vh;
   object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
 `;
 
 const CloseButton = styled.button`
@@ -214,4 +342,47 @@ const CloseButton = styled.button`
   z-index: 1001;
 `;
 
-export default Gallery; 
+const NavigationButton = styled.button<{ $direction: "left" | "right" }>`
+  position: absolute;
+  top: 50%;
+  ${({ $direction }) =>
+    $direction === "left" ? "left: -60px;" : "right: -60px;"}
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1001;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    ${({ $direction }) =>
+      $direction === "left" ? "left: 10px;" : "right: 10px;"}
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+const ImageCounter = styled.div`
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
+`;
+
+export default Gallery;

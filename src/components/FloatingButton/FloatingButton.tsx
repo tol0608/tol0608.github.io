@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import Image from "../../assets/img/IMG_3613.jpeg";
+import { Modal } from "antd";
 
 declare global {
   interface Window {
@@ -38,6 +39,10 @@ const FloatingButton = () => {
             },
           },
         ],
+      });
+    } else {
+      Modal.info({
+        content: "카카오톡을 설치해주세요.",
       });
     }
   };

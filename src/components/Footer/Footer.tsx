@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { useEffect } from 'react';
+import styled from "styled-components";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -17,11 +17,11 @@ const Footer = () => {
   const handleShareKakao = () => {
     if (window.Kakao) {
       window.Kakao.Share.sendDefault({
-        objectType: 'feed',
+        objectType: "feed",
         content: {
-          title: '이재현 · 허정현의 결혼식에 초대합니다',
-          description: '2025년 11월 9일 일요일 오후 1시\nW웨딩 더에스웨딩홀',
-          imageUrl: 'https://your-domain.com/wedding-thumbnail.jpg', 
+          title: "이재현 · 허정현의 결혼식에 초대합니다",
+          description: "2025년 11월 9일 일요일 오후 1시\nW웨딩 더에스웨딩홀",
+          imageUrl: "https://your-domain.com/wedding-thumbnail.jpg",
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
@@ -29,7 +29,7 @@ const Footer = () => {
         },
         buttons: [
           {
-            title: '청첩장 보기',
+            title: "청첩장 보기",
             link: {
               mobileWebUrl: window.location.href,
               webUrl: window.location.href,
@@ -45,9 +45,7 @@ const Footer = () => {
       {/* <ShareButton onClick={handleShareKakao}>
         카카오톡으로 공유하기
       </ShareButton> */}
-      <Copyright>
-        © 2024 이재현 · 허정현
-      </Copyright>
+      <Copyright>© 2025 이재현 · 허정현</Copyright>
     </FooterWrapper>
   );
 };
@@ -60,9 +58,9 @@ const FooterWrapper = styled.footer`
   flex-direction: column;
   align-items: center;
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -50px;
     left: 0;
@@ -79,7 +77,7 @@ const FooterWrapper = styled.footer`
 
 const ShareButton = styled.button`
   padding: 12px 24px;
-  background-color: #FEE500;
+  background-color: #fee500;
   border: none;
   border-radius: 25px;
   font-size: 1rem;
@@ -89,7 +87,7 @@ const ShareButton = styled.button`
   font-weight: 500;
 
   &:hover {
-    background-color: #FDD700;
+    background-color: #fdd700;
   }
 
   &:active {

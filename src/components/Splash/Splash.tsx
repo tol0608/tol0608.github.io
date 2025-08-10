@@ -1,6 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import SplitText from "../SplitText";
 
 interface SplashProps {
   onComplete: () => void;
@@ -18,6 +19,10 @@ const Splash = ({ onComplete }: SplashProps) => {
     return () => clearTimeout(timer);
   }, [onComplete]);
 
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
+
   return (
     <AnimatePresence>
       {showSplash && (
@@ -32,15 +37,22 @@ const Splash = ({ onComplete }: SplashProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <MainText>
-                이재현 · 허정현
-              </MainText>
-              <SubText>
-                2025. 11. 09
-              </SubText>
-              <SubText>
-                살려주세요
-              </SubText>
+              <MainText>이재현 · 허정현</MainText>
+              <SubText>2025. 11. 09</SubText>
+              <SplitText
+                text="우리 결혼해요!"
+                className="text-2xl font-semibold text-center"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                onLetterAnimationComplete={handleAnimationComplete}
+              />
             </motion.div>
           </ContentWrapper>
         </SplashOverlay>
@@ -64,10 +76,14 @@ const SplashOverlay = styled(motion.div)`
 
 const ContentWrapper = styled.div`
   text-align: center;
+
+  .text-2xl {
+    font-family: "Nanum Myeongjo", serif;
+  }
 `;
 
 const MainText = styled.h1`
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -75,9 +91,9 @@ const MainText = styled.h1`
 `;
 
 const SubText = styled.p`
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
   font-size: 1rem;
   color: #666;
 `;
 
-export default Splash; 
+export default Splash;

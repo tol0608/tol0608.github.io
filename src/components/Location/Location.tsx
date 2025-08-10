@@ -78,7 +78,7 @@ const Location = () => {
         <MapContainer id="map" />
 
         <VenueInfo>
-          <VenueName>W웨딩 더에스웨딩홀</VenueName>
+          <VenueName>W웨딩 더에스웨딩홀 그랜드홀</VenueName>
           <Address>
             부산광역시 남구 전포대로 26(문현동,삼성힐타워상가)
             <CopyButton onClick={handleCopyAddress}>
@@ -130,6 +130,8 @@ const Location = () => {
                 내비게이션 "W웨딩 더에스웨딩홀" 검색
                 <br />
                 지하 주차장 무료
+                <br />
+                이마트 문현점 주차장 및 셔틀버스 지원
               </TransportText>
             </TransportInfo>
           </TransportItem>
@@ -141,7 +143,11 @@ const Location = () => {
 
 const Section = styled.section`
   padding: 80px 20px;
-  background-color: white;
+  background-color: #fff;
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
 `;
 
 const Title = styled.h2`
@@ -180,6 +186,12 @@ const Address = styled.p`
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 0.8rem;
+    word-break: nowrap;
+  }
 `;
 
 const CopyButton = styled.button`
@@ -193,6 +205,10 @@ const CopyButton = styled.button`
 
   &:hover {
     color: #666;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0;
   }
 `;
 
