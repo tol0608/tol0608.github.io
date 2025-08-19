@@ -1,6 +1,5 @@
 import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import styled from "styled-components";
 import Home from "../pages/home";
 import {
   MainContainer,
@@ -12,6 +11,8 @@ import FloatingButton from "../components/FloatingButton/FloatingButton";
 import Splash from "../components/Splash/Splash";
 import Footer from "../components/Footer/Footer";
 import Aurora from "../components/Background/Aurora";
+import AudioPlayer from "../components/AudioPlayer/AudioPlayer";
+import styled from "styled-components";
 
 declare global {
   interface Window {
@@ -70,6 +71,13 @@ const MainLayout = () => {
           </SafeArea>
         </MainContainer>
       </OverlayContainer>
+
+      {/* 배경음악 플레이어 */}
+      <AudioPlayer
+        audioSrc="/audio/backmusic.mp3"
+        autoPlay={true}
+        loop={true}
+      />
     </>
   );
 };

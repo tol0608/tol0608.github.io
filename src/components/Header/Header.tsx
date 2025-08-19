@@ -17,10 +17,10 @@ const Header = () => {
             text={[
               "잎새달 스무이레에 만나",
               "미틈달 아흐이레에",
-              "하나가 되다...",
+              "하나가 되다.",
             ]}
-            typingSpeed={75}
-            pauseDuration={1500}
+            typingSpeed={100}
+            pauseDuration={2000}
             showCursor={true}
             cursorCharacter="|"
           />
@@ -45,16 +45,15 @@ const HeaderWrapper = styled.header`
 
 const HeaderText = styled.h1`
   font-family: "Nanum Myeongjo", serif;
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 1.2rem;
+  line-height: 1.6;
   color: #333;
   font-weight: 400;
   letter-spacing: 0.1em;
   word-break: keep-all;
-  padding: 0 20px;
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 `;
 

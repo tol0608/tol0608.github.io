@@ -12,6 +12,10 @@ export default defineConfig({
     "**/*.gif",
     "**/*.svg",
     "**/*.webp",
+    "**/*.mp3",
+    "**/*.mp4",
+    "**/*.wav",
+    "**/*.ogg",
   ],
   esbuild: {
     target: "es2020",

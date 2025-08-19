@@ -50,6 +50,35 @@ const Home = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
+          "아홉살이 되었습니다. 우리의 사랑이요."
+          <br /> 9년이라는 시간 동안
+          <br /> 함께 웃고, 싸우고, 성장해온
+          <br /> 저희가 이제는 '연인'이라는 이름을 넘어
+          <br /> '부부'로 새 출발하려 합니다.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+        >
+          <br /> 오랜 시간 함께한 만큼,
+          <br /> 더 단단하게 앞으로도 서로의 인생을
+          <br /> 지켜줄 동반자가 되겠습니다.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+        >
+          <br /> 저희의 새로운 시작을
+          <br /> 따뜻한 마음으로 지켜봐 주시고
+          <br /> 축복해 주시면 감사하겠습니다.
+        </motion.p>
+        {/* <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+        >
           서로 마주 보며 다져온 사랑을
           <br />
           이제 함께 한 곳을 바라보며
@@ -61,7 +90,7 @@ const Home = () => {
           지켜나갈 수 있도록
           <br />
           앞날을 축복해 주시면 감사하겠습니다.
-        </motion.p>
+        </motion.p> */}
       </IntroSection>
       {/* <HorizontalScroll 
         triggerElement={introRef}
@@ -106,7 +135,7 @@ const Container = styled.div`
 
 const MainImage = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 85vh;
   position: relative;
   background-color: #fff;
   margin-bottom: 100px;

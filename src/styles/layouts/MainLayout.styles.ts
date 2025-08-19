@@ -16,7 +16,7 @@ export const ContentWrapper = styled.main`
   /* height: calc(100vh - 196px); // 상단 헤더(60px)와 하단 네비게이션(136px) 고려 */
   height: calc(100vh - 105px);
   overflow-y: auto;
-  padding: ${({ theme }) => theme.spacing.md};
+  padding: 0 ${({ theme }) => theme.spacing.sm};
 `;
 
 export const Header = styled.header`
