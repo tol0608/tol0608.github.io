@@ -10,28 +10,41 @@ interface AudioPlayerProps {
   audioSrc: string;
   autoPlay?: boolean;
   loop?: boolean;
+  startTime?: number;
+  fadeIn?: boolean;
+  fadeInDuration?: number;
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({
   audioSrc,
   autoPlay = true,
   loop = true,
+  startTime = 0,
+  fadeIn = false,
+  fadeInDuration = 2000,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [showControls, setShowControls] = useState(false);
   const [audioLoaded, setAudioLoaded] = useState(false);
+  const [autoPlayFailed, setAutoPlayFailed] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const controlsRef = useRef<HTMLDivElement>(null);
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || hasInitialized.current) return;
+
+    hasInitialized.current = true;
 
     // 초기 볼륨 설정
     audio.volume = volume;
     audio.loop = loop;
+
+    // 55초부터 시작하도록 설정
+    audio.currentTime = 55;
 
     // 오류 처리
     const handleError = (e: Event) => {
@@ -48,39 +61,93 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
       console.log("오디오 재생 가능:", audioSrc);
       setAudioLoaded(true);
 
+      // startTime이 설정되어 있으면 해당 시간으로 이동
+      if (startTime > 0) {
+        audio.currentTime = startTime;
+      }
+
       // 오디오가 로딩 완료되면 자동 재생 시도
       if (autoPlay) {
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              console.log("오디오 로딩 후 자동 재생 성공");
-              setIsPlaying(true);
-            })
-            .catch((error) => {
-              console.log("오디오 로딩 후 자동 재생 실패:", error);
-              setIsPlaying(false);
-              // 사용자 상호작용 후 재생 시도
-              const handleUserInteraction = () => {
-                audio
-                  .play()
-                  .then(() => {
-                    setIsPlaying(true);
-                    document.removeEventListener(
-                      "click",
-                      handleUserInteraction
-                    );
-                    document.removeEventListener(
-                      "touchstart",
-                      handleUserInteraction
-                    );
-                  })
-                  .catch(console.error);
-              };
-              document.addEventListener("click", handleUserInteraction);
-              document.addEventListener("touchstart", handleUserInteraction);
-            });
-        }
+        // 자동 재생 시도
+        const attemptAutoPlay = async () => {
+          try {
+            await audio.play();
+            console.log("오디오 로딩 후 자동 재생 성공");
+            setIsPlaying(true);
+
+            // 페이드인 효과 적용
+            if (fadeIn) {
+              audio.volume = 0;
+              const targetVolume = volume;
+              const steps = 50; // 페이드인 단계
+              const stepDuration = fadeInDuration / steps;
+              let currentStep = 0;
+
+              const fadeInInterval = setInterval(() => {
+                currentStep++;
+                const newVolume = (targetVolume * currentStep) / steps;
+                audio.volume = newVolume;
+
+                if (currentStep >= steps) {
+                  clearInterval(fadeInInterval);
+                  audio.volume = targetVolume;
+                }
+              }, stepDuration);
+            }
+          } catch (error) {
+            console.log("오디오 로딩 후 자동 재생 실패:", error);
+            setIsPlaying(false);
+            setAutoPlayFailed(true);
+
+            // 다양한 사용자 상호작용 이벤트 리스너 추가
+            const handleScreenInteraction = async () => {
+              try {
+                await audio.play();
+                setIsPlaying(true);
+                setAutoPlayFailed(false);
+
+                // 페이드인 효과 적용 (사용자 상호작용 후)
+                if (fadeIn) {
+                  audio.volume = 0;
+                  const targetVolume = volume;
+                  const steps = 50;
+                  const stepDuration = fadeInDuration / steps;
+                  let currentStep = 0;
+
+                  const fadeInInterval = setInterval(() => {
+                    currentStep++;
+                    const newVolume = (targetVolume * currentStep) / steps;
+                    audio.volume = newVolume;
+
+                    if (currentStep >= steps) {
+                      clearInterval(fadeInInterval);
+                      audio.volume = targetVolume;
+                    }
+                  }, stepDuration);
+                }
+
+                // 이벤트 리스너 제거
+                document.removeEventListener("click", handleScreenInteraction);
+                document.removeEventListener(
+                  "touchstart",
+                  handleScreenInteraction
+                );
+                document.removeEventListener(
+                  "keydown",
+                  handleScreenInteraction
+                );
+              } catch (playError) {
+                console.log("화면 상호작용 후 재생 실패:", playError);
+              }
+            };
+
+            document.addEventListener("click", handleScreenInteraction);
+            document.addEventListener("touchstart", handleScreenInteraction);
+            document.addEventListener("keydown", handleScreenInteraction);
+          }
+        };
+
+        attemptAutoPlay();
       }
     };
 
@@ -113,7 +180,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
       audio.removeEventListener("loadstart", handleLoadStart);
       audio.removeEventListener("canplay", handleCanPlay);
     };
-  }, [autoPlay, loop, audioSrc]);
+  }, []);
 
   // 컨트롤러 영역 밖 클릭 시 닫기
   useEffect(() => {
@@ -188,8 +255,10 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
         $isPlaying={isPlaying && audioLoaded}
         $disabled={showControls}
         $show={!showControls}
+        $autoPlayFailed={autoPlayFailed}
       >
         <MusicNoteIcon />
+        {autoPlayFailed && <AutoPlayHint>클릭하여 재생</AutoPlayHint>}
       </FloatingMusicButton>
 
       {/* 컨트롤러 패널 */}
@@ -237,6 +306,7 @@ const FloatingMusicButton = styled.button<{
   $isPlaying: boolean;
   $disabled: boolean;
   $show: boolean;
+  $autoPlayFailed: boolean;
 }>`
   position: relative;
   width: 56px;
@@ -421,6 +491,30 @@ const VolumeSlider = styled.input`
 
   @media (max-width: 768px) {
     width: 50px;
+  }
+`;
+
+const AutoPlayHint = styled.div`
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1002;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.8);
   }
 `;
 

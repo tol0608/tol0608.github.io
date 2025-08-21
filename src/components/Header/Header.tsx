@@ -44,7 +44,6 @@ const HeaderWrapper = styled.header`
 `;
 
 const HeaderText = styled.h1`
-  font-family: "Nanum Myeongjo", serif;
   font-size: 1.2rem;
   line-height: 1.6;
   color: #333;

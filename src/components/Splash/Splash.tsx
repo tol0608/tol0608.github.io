@@ -78,12 +78,10 @@ const ContentWrapper = styled.div`
   text-align: center;
 
   .text-2xl {
-    font-family: "Nanum Myeongjo", serif;
   }
 `;
 
 const MainText = styled.h1`
-  font-family: "Nanum Myeongjo", serif;
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -91,7 +89,6 @@ const MainText = styled.h1`
 `;
 
 const SubText = styled.p`
-  font-family: "Nanum Myeongjo", serif;
   font-size: 1rem;
   color: #666;
 `;

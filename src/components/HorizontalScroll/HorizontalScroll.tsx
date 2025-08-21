@@ -9,16 +9,21 @@ interface HorizontalScrollProps {
   containerRef: React.RefObject<HTMLElement>;
 }
 
-const HorizontalScroll = ({  triggerElement, endElement, containerRef }: HorizontalScrollProps) => {
+const HorizontalScroll = ({
+  triggerElement,
+  endElement,
+  containerRef,
+}: HorizontalScrollProps) => {
   useEffect(() => {
-    if (!triggerElement.current || !containerRef.current || !endElement.current) return;
+    if (!triggerElement.current || !containerRef.current || !endElement.current)
+      return;
 
     // GSAP 플러그인 등록
     gsap.registerPlugin(ScrollTrigger);
 
     // 초기 상태 설정
-    gsap.set('.panel', { opacity: 0 });
-    gsap.set('.panel-1', { opacity: 1 });
+    gsap.set(".panel", { opacity: 0 });
+    gsap.set(".panel-1", { opacity: 1 });
 
     ScrollTrigger.create({
       trigger: triggerElement.current,
@@ -33,26 +38,26 @@ const HorizontalScroll = ({  triggerElement, endElement, containerRef }: Horizon
       onUpdate: (self) => {
         const progress = self.progress;
         // console.log('Progress:', progress);
-      
+
         // 첫 번째 패널 (0 ~ 0.33)
         if (progress < 0.33) {
           gsap.to(".panel-1", {
             opacity: 1,
             y: 0,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
           gsap.to(".panel-2", {
             opacity: 0,
             y: 50,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
           gsap.to(".panel-3", {
             opacity: 0,
             y: 50,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
         }
         // 두 번째 패널 (0.33 ~ 0.66)
@@ -61,19 +66,19 @@ const HorizontalScroll = ({  triggerElement, endElement, containerRef }: Horizon
             opacity: 0,
             y: -50,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
           gsap.to(".panel-2", {
             opacity: 1,
             y: 0,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
           gsap.to(".panel-3", {
             opacity: 0,
             y: 50,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
         }
         // 세 번째 패널 (0.66 ~ 1)
@@ -82,26 +87,26 @@ const HorizontalScroll = ({  triggerElement, endElement, containerRef }: Horizon
             opacity: 0,
             y: -50,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
           gsap.to(".panel-2", {
             opacity: 0,
             y: -50,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
           gsap.to(".panel-3", {
             opacity: 1,
             y: 0,
             duration: 0.3,
-            ease: "power1.inOut"
+            ease: "power1.inOut",
           });
         }
-      }
+      },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [triggerElement, endElement, containerRef]);
 
@@ -160,14 +165,12 @@ const Panel = styled.div`
   h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    font-family: "Nanum Myeongjo", serif;
   }
 
   p {
     font-size: 1.5rem;
     color: #666;
-    font-family: "Nanum Myeongjo", serif;
   }
 `;
 
-export default HorizontalScroll; 
+export default HorizontalScroll;

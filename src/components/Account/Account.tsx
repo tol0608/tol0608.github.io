@@ -91,7 +91,6 @@ const Title = styled.h2`
   font-weight: 500;
   text-align: center;
   margin-bottom: 40px;
-  font-family: "Nanum Myeongjo", serif;
 `;
 
 const AccountList = styled.div`

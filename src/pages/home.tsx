@@ -214,7 +214,6 @@ const Names = styled.h1`
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 20px;
-  font-family: "Nanum Myeongjo", serif;
 `;
 
 const Date = styled.p`
@@ -237,7 +236,6 @@ const IntroSection = styled.div`
     font-size: 16px;
     line-height: 1.8;
     color: #333;
-    font-family: "Nanum Myeongjo", serif;
   }
 `;
 
