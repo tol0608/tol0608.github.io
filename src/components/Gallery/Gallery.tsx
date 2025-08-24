@@ -13,16 +13,18 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // import galleryImage6 from "../../assets/img/gallery/gallery_6.jpeg";
 // import galleryImage7 from "../../assets/img/gallery/gallery_7.jpeg";
 // import galleryImage8 from "../../assets/img/gallery/gallery_8.jpeg";
-import sero1 from "../../assets/img/gallery/sero1.jpg";
-import sero2 from "../../assets/img/gallery/sero2.jpg";
-import sero3 from "../../assets/img/gallery/sero3.jpg";
-import sero4 from "../../assets/img/gallery/sero4.jpg";
-import sero5 from "../../assets/img/gallery/sero5.jpg";
-import sero6 from "../../assets/img/gallery/sero6.jpg";
-import sero7 from "../../assets/img/gallery/sero7.jpg";
-import sero8 from "../../assets/img/gallery/sero8.jpg";
-import sero9 from "../../assets/img/gallery/sero9.jpg";
-import sero10 from "../../assets/img/gallery/sero10.jpg";
+import sero1 from "../../assets/img/gallery/sero1-toledit.jpg";
+import sero2 from "../../assets/img/gallery/sero2-toledit.jpg";
+import sero3 from "../../assets/img/gallery/sero3-toledit.jpg";
+import sero4 from "../../assets/img/gallery/sero4-toledit.jpg";
+import sero5 from "../../assets/img/gallery/sero5-toledit.jpg";
+import sero6 from "../../assets/img/gallery/sero6-toledit.jpg";
+import sero7 from "../../assets/img/gallery/sero7-toledit.jpg";
+import sero8 from "../../assets/img/gallery/sero8-toledit.jpg";
+import sero9 from "../../assets/img/gallery/sero9-toledit.jpg";
+import sero10 from "../../assets/img/gallery/sero10-toledit.jpg";
+import sero11 from "../../assets/img/gallery/sero11.jpg";
+import sero12 from "../../assets/img/gallery/sero12.jpg";
 import studio1 from "../../assets/img/gallery/HCG_0079-toledit.jpg";
 import studio2 from "../../assets/img/gallery/HCG_0301-toledit.jpg";
 import studio3 from "../../assets/img/gallery/HCG_0597-toledit.jpg";
@@ -42,12 +44,14 @@ const images = [
   { id: 8, src: sero8, alt: "웨딩 사진 8" },
   { id: 9, src: sero9, alt: "웨딩 사진 9" },
   { id: 10, src: sero10, alt: "웨딩 사진 10" },
-  { id: 11, src: studio1, alt: "웨딩 사진 11" },
-  { id: 12, src: studio2, alt: "웨딩 사진 12" },
-  { id: 13, src: studio3, alt: "웨딩 사진 13" },
-  { id: 14, src: studio4, alt: "웨딩 사진 14" },
-  { id: 15, src: studio5, alt: "웨딩 사진 15" },
-  { id: 16, src: studio6, alt: "웨딩 사진 16" },
+  { id: 11, src: sero11, alt: "웨딩 사진 11" },
+  { id: 12, src: sero12, alt: "웨딩 사진 12" },
+  { id: 13, src: studio1, alt: "웨딩 사진 13" },
+  { id: 14, src: studio2, alt: "웨딩 사진 14" },
+  { id: 15, src: studio3, alt: "웨딩 사진 15" },
+  { id: 16, src: studio4, alt: "웨딩 사진 16" },
+  { id: 17, src: studio5, alt: "웨딩 사진 17" },
+  { id: 18, src: studio6, alt: "웨딩 사진 18" },
 ];
 
 interface GalleryProps {

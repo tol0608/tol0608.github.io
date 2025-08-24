@@ -5,7 +5,7 @@ import {
   SafeArea,
 } from "../../styles/layouts/MainLayout.styles";
 import Header from "../Header/Header";
-import FloatingButton from "../FloatingButton/FloatingButton";
+// import FloatingButton from "../FloatingButton/FloatingButton";
 import Splash from "../Splash/Splash";
 import Footer from "../Footer/Footer";
 import Aurora from "../Background/Aurora";
@@ -45,10 +45,11 @@ const withMainLayout = (WrappedComponent: React.ComponentType) => {
 
       setMusicInitialized(true);
 
-      // 55초부터 시작, 무한 루프
-      audio.currentTime = 55.5;
+      // 140초부터 시작, 무한 루프
+      // audio.currentTime = 55.5;
+      audio.currentTime = 140;
       audio.loop = true;
-      audio.volume = 0.3;
+      audio.volume = 0.15;
 
       // 자동재생 시도
       const attemptAutoPlay = async () => {
@@ -99,6 +100,64 @@ const withMainLayout = (WrappedComponent: React.ComponentType) => {
       }
     }, [musicInitialized, isMusicPlaying]);
 
+    // 확대 축소 방지 이벤트 리스너 등록
+    useEffect(() => {
+      // 더블탭 줌 방지
+      let lastTouchEnd = 0;
+      const handleTouchEnd = (e: TouchEvent) => {
+        const now = new Date().getTime();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      };
+
+      // 핀치 줌 방지
+      const handleTouchMove = (e: TouchEvent) => {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      };
+
+      // 더블클릭 줌 방지
+      const handleDoubleClick = (e: MouseEvent) => {
+        e.preventDefault();
+      };
+
+      // 키보드 줌 방지 (Ctrl + +/-)
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (
+          (e.ctrlKey || e.metaKey) &&
+          (e.key === "+" || e.key === "-" || e.key === "=")
+        ) {
+          e.preventDefault();
+        }
+      };
+
+      // 휠 줌 방지 (Ctrl + 휠)
+      const handleWheel = (e: WheelEvent) => {
+        if (e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+        }
+      };
+
+      document.addEventListener("touchend", handleTouchEnd, { passive: false });
+      document.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+      document.addEventListener("dblclick", handleDoubleClick);
+      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener("wheel", handleWheel, { passive: false });
+
+      return () => {
+        document.removeEventListener("touchend", handleTouchEnd);
+        document.removeEventListener("touchmove", handleTouchMove);
+        document.removeEventListener("dblclick", handleDoubleClick);
+        document.removeEventListener("keydown", handleKeyDown);
+        document.removeEventListener("wheel", handleWheel);
+      };
+    }, []);
+
     return (
       <>
         {/* 배경음악 */}
@@ -121,7 +180,7 @@ const withMainLayout = (WrappedComponent: React.ComponentType) => {
               <ContentWrapper>
                 <WrappedComponent {...props} />
               </ContentWrapper>
-              <FloatingButton />
+              {/* <FloatingButton /> */}
               <Footer />
             </SafeArea>
           </MainContainer>

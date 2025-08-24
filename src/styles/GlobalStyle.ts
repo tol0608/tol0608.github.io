@@ -15,6 +15,11 @@ const GlobalStyle = createGlobalStyle`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    
+    // 확대 축소 방지
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 
     // Firefox 스크롤바 숨기기
     scrollbar-width: none;
@@ -43,6 +48,16 @@ const GlobalStyle = createGlobalStyle`
     word-break: keep-all;
     background-color: ${({ theme }) => theme.colors.background.paper};
     color: ${({ theme }) => theme.colors.text.primary};
+    
+    // 확대 축소 방지
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    
+    // 더블탭 줌 방지
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 
     // Firefox
     scrollbar-width: none;
@@ -117,6 +132,26 @@ const GlobalStyle = createGlobalStyle`
       background: ${({ theme }) => theme.colors.blue[500]};
       border-color: ${({ theme }) => theme.colors.blue[500]};
     }
+  }
+
+  // 이미지 확대 축소 방지
+  img {
+    touch-action: manipulation;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+  }
+
+  // 버튼 확대 축소 방지
+  button {
+    touch-action: manipulation;
+  }
+
+  // 링크 확대 축소 방지
+  a {
+    touch-action: manipulation;
   }
 `;
 

@@ -23,6 +23,64 @@ const Intro = () => {
     playAudio();
   }, []);
 
+  // 확대 축소 방지 이벤트 리스너 등록
+  useEffect(() => {
+    // 더블탭 줌 방지
+    let lastTouchEnd = 0;
+    const handleTouchEnd = (e: TouchEvent) => {
+      const now = new Date().getTime();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    };
+
+    // 핀치 줌 방지
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    };
+
+    // 더블클릭 줌 방지
+    const handleDoubleClick = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    // 키보드 줌 방지 (Ctrl + +/-)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        (e.key === "+" || e.key === "-" || e.key === "=")
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    // 휠 줌 방지 (Ctrl + 휠)
+    const handleWheel = (e: WheelEvent) => {
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchend", handleTouchEnd, { passive: false });
+    document.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
+    document.addEventListener("dblclick", handleDoubleClick);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchend", handleTouchEnd);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("dblclick", handleDoubleClick);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   const handleEnter = () => {
     navigate("/home");
   };

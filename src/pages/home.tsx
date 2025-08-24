@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import mainImage from "../assets/img/gallery/sero9.jpg";
+import mainImage from "../assets/img/gallery/sero9-toledit.jpg";
 import Calendar from "../components/Calendar/Calendar";
 import Location from "../components/Location/Location";
 import Account from "../components/Account/Account";
