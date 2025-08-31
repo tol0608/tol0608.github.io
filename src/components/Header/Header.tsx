@@ -1,13 +1,24 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import TextType from "../TextType";
+import { useState, useEffect } from "react";
 
 const Header = () => {
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAnimation(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <HeaderWrapper>
       <motion.div
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={showAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
         <HeaderText>
@@ -19,8 +30,8 @@ const Header = () => {
               "미틈달 아흐이레에",
               "하나가 되다.",
             ]}
-            typingSpeed={100}
-            pauseDuration={2000}
+            typingSpeed={50}
+            pauseDuration={2500}
             showCursor={true}
             cursorCharacter="|"
           />

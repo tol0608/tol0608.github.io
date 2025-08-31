@@ -31,27 +31,39 @@ import studio3 from "../../assets/img/gallery/HCG_0597-toledit.jpg";
 import studio4 from "../../assets/img/gallery/HCG_0564-toledit.jpg";
 import studio5 from "../../assets/img/gallery/HCG_0626-toledit.jpg";
 import studio6 from "../../assets/img/gallery/HCG_0840-toledit.jpg";
+import studio7 from "../../assets/img/gallery/HCG_0025-toledit 2.jpg";
+import studio8 from "../../assets/img/gallery/HCG_0678-toledit.jpg";
+import studio9 from "../../assets/img/gallery/HCG_0766-toledit.jpg";
+import studio10 from "../../assets/img/gallery/HCG_0533-toledit.jpg";
+import studio11 from "../../assets/img/gallery/HCG_0517-toledit.jpg";
+import studio12 from "../../assets/img/gallery/HCG_0328-toledit.jpg";
 
 // 이미지 목록 (실제 이미지 경로로 교체 필요)
 const images = [
-  { id: 1, src: sero1, alt: "웨딩 사진 1" },
-  { id: 2, src: sero2, alt: "웨딩 사진 2" },
+  // { id: 1, src: sero1, alt: "웨딩 사진 1" },
+  // { id: 2, src: sero2, alt: "웨딩 사진 2" },
   { id: 3, src: sero3, alt: "웨딩 사진 3" },
   { id: 4, src: sero4, alt: "웨딩 사진 4" },
   { id: 5, src: sero5, alt: "웨딩 사진 5" },
   { id: 6, src: sero6, alt: "웨딩 사진 6" },
   { id: 7, src: sero7, alt: "웨딩 사진 7" },
-  { id: 8, src: sero8, alt: "웨딩 사진 8" },
   { id: 9, src: sero9, alt: "웨딩 사진 9" },
   { id: 10, src: sero10, alt: "웨딩 사진 10" },
+  { id: 8, src: sero8, alt: "웨딩 사진 8" },
   { id: 11, src: sero11, alt: "웨딩 사진 11" },
   { id: 12, src: sero12, alt: "웨딩 사진 12" },
   { id: 13, src: studio1, alt: "웨딩 사진 13" },
+  { id: 19, src: studio7, alt: "웨딩 사진 19" },
   { id: 14, src: studio2, alt: "웨딩 사진 14" },
+  { id: 24, src: studio12, alt: "웨딩 사진 24" },
   { id: 15, src: studio3, alt: "웨딩 사진 15" },
   { id: 16, src: studio4, alt: "웨딩 사진 16" },
   { id: 17, src: studio5, alt: "웨딩 사진 17" },
   { id: 18, src: studio6, alt: "웨딩 사진 18" },
+  { id: 20, src: studio8, alt: "웨딩 사진 20" },
+  { id: 21, src: studio9, alt: "웨딩 사진 21" },
+  { id: 22, src: studio10, alt: "웨딩 사진 22" },
+  { id: 23, src: studio11, alt: "웨딩 사진 23" },
 ];
 
 interface GalleryProps {
