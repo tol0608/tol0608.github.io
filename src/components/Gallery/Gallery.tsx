@@ -69,7 +69,7 @@ interface GalleryProps {
   ref?: React.RefObject<HTMLElement>;
 }
 
-const Gallery = forwardRef<HTMLElement, GalleryProps>((props, ref) => {
+const Gallery = forwardRef<HTMLElement, GalleryProps>((_, ref) => {
   const [showAll, setShowAll] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null

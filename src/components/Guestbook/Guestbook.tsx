@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { Modal, Input as AntInput, Button } from "antd";
 import styled from "styled-components";
-import CryptoJS from "crypto-js";
+// import CryptoJS from "crypto-js";
 
 interface GuestbookEntry {
   id: number;
@@ -374,7 +374,6 @@ const EntryMessage = styled.p`
   font-size: 1.1rem;
   color: #333;
 `;
-
 
 const ButtonContainer = styled.div`
   display: flex;
