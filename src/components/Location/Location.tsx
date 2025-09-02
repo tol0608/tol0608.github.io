@@ -78,7 +78,7 @@ const Location = () => {
         <Title>오시는 길</Title>
 
         <MapContainer>
-          <MapImage src="/src/assets/img/map.jpg" alt="위치 지도" />
+          <img src="/map.jpg" alt="위치 지도" />
         </MapContainer>
 
         <VenueInfo>
@@ -178,12 +178,6 @@ const MapContainer = styled.div`
   @media (max-width: 768px) {
     height: 250px;
   }
-`;
-
-const MapImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `;
 
 const VenueInfo = styled.div`
