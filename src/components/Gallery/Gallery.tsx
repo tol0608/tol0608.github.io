@@ -5,15 +5,7 @@ import { useInView } from "react-intersection-observer";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// import galleryImage1 from "../../assets/img/gallery/gallery_1.jpeg";
-// import galleryImage2 from "../../assets/img/gallery/gallery_2.jpeg";
-// import galleryImage3 from "../../assets/img/gallery/gallery_3.jpeg";
-// import galleryImage4 from "../../assets/img/gallery/gallery_4.jpeg";
-// import galleryImage5 from "../../assets/img/gallery/gallery_5.jpeg";
-// import galleryImage6 from "../../assets/img/gallery/gallery_6.jpeg";
-// import galleryImage7 from "../../assets/img/gallery/gallery_7.jpeg";
-// import galleryImage8 from "../../assets/img/gallery/gallery_8.jpeg";
-// 압축된 이미지들 사용
+
 import sero3 from "../../assets/img/gallery/compressed/sero3-toledit.jpg";
 import sero4 from "../../assets/img/gallery/compressed/sero4-toledit.jpg";
 import sero5 from "../../assets/img/gallery/compressed/sero5-toledit.jpg";
@@ -24,6 +16,8 @@ import sero9 from "../../assets/img/gallery/compressed/sero9-toledit.jpg";
 import sero10 from "../../assets/img/gallery/compressed/sero10-toledit.jpg";
 import sero11 from "../../assets/img/gallery/compressed/sero11.jpg";
 import sero12 from "../../assets/img/gallery/compressed/sero12.jpg";
+import sero13 from "../../assets/img/gallery/compressed/IMG_1732.JPG";
+import sero14 from "../../assets/img/gallery/compressed/IMG_1733.JPG";
 import studio1 from "../../assets/img/gallery/compressed/HCG_0079-toledit.jpg";
 import studio2 from "../../assets/img/gallery/compressed/HCG_0301-toledit.jpg";
 import studio3 from "../../assets/img/gallery/compressed/HCG_0597-toledit.jpg";
@@ -39,10 +33,8 @@ import studio12 from "../../assets/img/gallery/compressed/HCG_0328-toledit.jpg";
 
 // 이미지 목록 (실제 이미지 경로로 교체 필요)
 const images = [
-  // { id: 1, src: sero1, alt: "웨딩 사진 1" },
-  // { id: 2, src: sero2, alt: "웨딩 사진 2" },
-  { id: 3, src: sero3, alt: "웨딩 사진 3" },
-  { id: 4, src: sero4, alt: "웨딩 사진 4" },
+  { id: 3, src: sero14, alt: "웨딩 사진 3" },
+  { id: 4, src: sero3, alt: "웨딩 사진 4" },
   { id: 5, src: sero5, alt: "웨딩 사진 5" },
   { id: 6, src: sero6, alt: "웨딩 사진 6" },
   { id: 7, src: sero7, alt: "웨딩 사진 7" },
@@ -50,19 +42,21 @@ const images = [
   { id: 10, src: sero10, alt: "웨딩 사진 10" },
   { id: 8, src: sero8, alt: "웨딩 사진 8" },
   { id: 11, src: sero11, alt: "웨딩 사진 11" },
-  { id: 12, src: sero12, alt: "웨딩 사진 12" },
-  { id: 13, src: studio1, alt: "웨딩 사진 13" },
-  { id: 19, src: studio7, alt: "웨딩 사진 19" },
-  { id: 14, src: studio2, alt: "웨딩 사진 14" },
-  { id: 24, src: studio12, alt: "웨딩 사진 24" },
-  { id: 15, src: studio3, alt: "웨딩 사진 15" },
-  { id: 16, src: studio4, alt: "웨딩 사진 16" },
-  { id: 17, src: studio5, alt: "웨딩 사진 17" },
-  { id: 18, src: studio6, alt: "웨딩 사진 18" },
-  { id: 20, src: studio8, alt: "웨딩 사진 20" },
-  { id: 21, src: studio9, alt: "웨딩 사진 21" },
-  { id: 22, src: studio10, alt: "웨딩 사진 22" },
-  { id: 23, src: studio11, alt: "웨딩 사진 23" },
+  { id: 12, src: sero13, alt: "웨딩 사진 12" },
+  { id: 13, src: sero12, alt: "웨딩 사진 13" },
+  { id: 14, src: sero4, alt: "웨딩 사진 14" },
+  { id: 15, src: studio1, alt: "웨딩 사진 15" },
+  { id: 16, src: studio7, alt: "웨딩 사진 18" },
+  { id: 17, src: studio2, alt: "웨딩 사진 16" },
+  { id: 18, src: studio12, alt: "웨딩 사진 25" },
+  { id: 19, src: studio3, alt: "웨딩 사진 17" },
+  { id: 20, src: studio4, alt: "웨딩 사진 16" },
+  { id: 21, src: studio5, alt: "웨딩 사진 17" },
+  { id: 22, src: studio6, alt: "웨딩 사진 18" },
+  { id: 23, src: studio8, alt: "웨딩 사진 20" },
+  { id: 24, src: studio9, alt: "웨딩 사진 21" },
+  { id: 25, src: studio10, alt: "웨딩 사진 22" },
+  { id: 26, src: studio11, alt: "웨딩 사진 23" },
 ];
 
 interface GalleryProps {

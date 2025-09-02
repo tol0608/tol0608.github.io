@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    naver: any;
+    kakao: any;
   }
 }
 
@@ -38,30 +38,32 @@ const Location = () => {
 
   useEffect(() => {
     const initializeMap = () => {
-      const mapOptions = {
-        center: new window.naver.maps.LatLng(35.139121, 129.06779),
-        zoom: 17,
-        minZoom: 15,
-        zoomControl: false,
-        draggable: false, // 드래그 비활성화
-        pinchZoom: false, // 핀치 줌 비활성화
-        scrollWheel: false, // 스크롤 줌 비활성화
-        keyboardShortcuts: false, // 키보드 컨트롤 비활성화
-        disableDoubleTapZoom: true, // 더블탭 줌 비활성화
-        disableDoubleClickZoom: true, // 더블클릭 줌 비활성화
-        disableTwoFingerTapZoom: true, // 두 손가락 탭 줌 비활성화
+      const container = document.getElementById("map");
+      const options = {
+        center: new window.kakao.maps.LatLng(35.139121, 129.06779),
+        level: 3,
+        draggable: false,
+        zoomable: false,
+        scrollwheel: false,
+        disableDoubleClick: true,
+        disableDoubleTapZoom: true,
+        disableTwoFingerTapZoom: true,
+        keyboardShortcuts: false,
+        mapTypeId: window.kakao.maps.MapTypeId.ROADMAP,
       };
 
-      const map = new window.naver.maps.Map("map", mapOptions);
+      const map = new window.kakao.maps.Map(container, options);
 
-      // 마커 위치도 동일한 좌표로 수정
-      new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(35.139121, 129.06779),
-        map: map,
+      // 마커 생성
+      const markerPosition = new window.kakao.maps.LatLng(35.139121, 129.06779);
+      const marker = new window.kakao.maps.Marker({
+        position: markerPosition,
       });
+
+      marker.setMap(map);
     };
 
-    if (window.naver && window.naver.maps) {
+    if (window.kakao && window.kakao.maps) {
       initializeMap();
     }
   }, []);
@@ -75,7 +77,9 @@ const Location = () => {
       >
         <Title>오시는 길</Title>
 
-        <MapContainer id="map" />
+        <MapContainer>
+          <MapImage src="/src/assets/img/map.jpg" alt="위치 지도" />
+        </MapContainer>
 
         <VenueInfo>
           <VenueName>W웨딩 더에스웨딩홀 그랜드홀</VenueName>
@@ -159,11 +163,27 @@ const Title = styled.h2`
 
 const MapContainer = styled.div`
   width: 100%;
-  height: 300px;
+  height: 400px;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    height: 250px;
+  }
+`;
+
+const MapImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const VenueInfo = styled.div`
