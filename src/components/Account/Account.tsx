@@ -25,8 +25,8 @@ const Account = () => {
       relation: "신랑",
     },
     {
-      bankName: "카카오뱅크",
-      accountNumber: "3333-07-9843576",
+      bankName: "국민은행",
+      accountNumber: "005902-00-023701",
       accountHolder: "허정현",
       relation: "신부",
     },

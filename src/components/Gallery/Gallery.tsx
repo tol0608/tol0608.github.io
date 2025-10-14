@@ -30,6 +30,10 @@ import studio9 from "../../assets/img/gallery/compressed/HCG_0766-toledit.jpg";
 import studio10 from "../../assets/img/gallery/compressed/HCG_0533-toledit.jpg";
 import studio11 from "../../assets/img/gallery/compressed/HCG_0517-toledit.jpg";
 import studio12 from "../../assets/img/gallery/compressed/HCG_0328-toledit.jpg";
+import new1 from "../../assets/img/gallery/compressed/new1.JPG";
+import new2 from "../../assets/img/gallery/compressed/new2.JPG";
+import new3 from "../../assets/img/gallery/compressed/new3.JPG";
+import new4 from "../../assets/img/gallery/compressed/new4.JPG";
 
 // 이미지 목록 (실제 이미지 경로로 교체 필요)
 const images = [
@@ -45,18 +49,22 @@ const images = [
   { id: 12, src: sero13, alt: "웨딩 사진 12" },
   { id: 13, src: sero12, alt: "웨딩 사진 13" },
   { id: 14, src: sero4, alt: "웨딩 사진 14" },
-  { id: 15, src: studio1, alt: "웨딩 사진 15" },
-  { id: 16, src: studio7, alt: "웨딩 사진 18" },
-  { id: 17, src: studio2, alt: "웨딩 사진 16" },
-  { id: 18, src: studio12, alt: "웨딩 사진 25" },
-  { id: 19, src: studio3, alt: "웨딩 사진 17" },
-  { id: 20, src: studio4, alt: "웨딩 사진 16" },
-  { id: 21, src: studio5, alt: "웨딩 사진 17" },
-  { id: 22, src: studio6, alt: "웨딩 사진 18" },
-  { id: 23, src: studio8, alt: "웨딩 사진 20" },
-  { id: 24, src: studio9, alt: "웨딩 사진 21" },
-  { id: 25, src: studio10, alt: "웨딩 사진 22" },
-  { id: 26, src: studio11, alt: "웨딩 사진 23" },
+  { id: 15, src: new1, alt: "웨딩 사진 24" },
+  { id: 16, src: new2, alt: "웨딩 사진 25" },
+  { id: 17, src: new3, alt: "웨딩 사진 26" },
+  { id: 18, src: new4, alt: "웨딩 사진 27" },
+  { id: 19, src: studio1, alt: "웨딩 사진 15" },
+  { id: 20, src: studio7, alt: "웨딩 사진 18" },
+  { id: 21, src: studio2, alt: "웨딩 사진 16" },
+  { id: 22, src: studio12, alt: "웨딩 사진 25" },
+  { id: 23, src: studio3, alt: "웨딩 사진 17" },
+  { id: 24, src: studio4, alt: "웨딩 사진 16" },
+  { id: 25, src: studio5, alt: "웨딩 사진 17" },
+  { id: 26, src: studio6, alt: "웨딩 사진 18" },
+  { id: 27, src: studio8, alt: "웨딩 사진 20" },
+  { id: 28, src: studio9, alt: "웨딩 사진 21" },
+  { id: 29, src: studio10, alt: "웨딩 사진 22" },
+  { id: 30, src: studio11, alt: "웨딩 사진 23" },
 ];
 
 interface GalleryProps {
@@ -72,6 +80,12 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((_, ref) => {
     threshold: 0.1,
     triggerOnce: true,
   });
+
+  useEffect(() => {
+    document.oncontextmenu = function () {
+      return false;
+    };
+  }, []);
 
   // 스와이프 관련 상태
   const [dragStart, setDragStart] = useState<number>(0);
