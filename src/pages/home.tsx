@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { MAIN_IMAGE_URL } from "../config/images";
-import Calendar from "../components/Calendar/Calendar";
 import Account from "../components/Account/Account";
 import Gallery from "../components/Gallery/Gallery";
 import { useRef } from "react";
@@ -13,18 +12,9 @@ const Home = () => {
 
   return (
     <Container ref={containerRef}>
-      <MainImage>
-        <ImageFrame>
-          <motion.img
-            src={MAIN_IMAGE_URL}
-            alt="메인 웨딩 이미지"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="main-image"
-          />
-        </ImageFrame>
-      </MainImage>
+      <ImageFrame>
+        <img src={MAIN_IMAGE_URL} alt="메인 웨딩 이미지" />
+      </ImageFrame>
 
       <IntroSection ref={introRef}>
         <motion.p
@@ -120,7 +110,7 @@ const MainImage = styled.div`
 
 const ImageFrame = styled.div`
   width: calc(100% - 20px);
-  height: 100%;
+  height: 55vh;
   position: relative;
   overflow: hidden;
   border: 1px solid #eaeaea;
