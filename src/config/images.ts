@@ -256,13 +256,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 24",
   },
-  {
-    id: 25,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1ukFanMQhH1mSZzRfQx9jwuPwIA1sBI9H/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 25",
-  },
+  // {
+  //   id: 25,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1ukFanMQhH1mSZzRfQx9jwuPwIA1sBI9H/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 25",
+  // },
   {
     id: 26,
     url: convertToDirectImageUrl(
@@ -270,13 +270,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 26",
   },
-  {
-    id: 27,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1xEF8oPHrpRLMmWRn_Fot6qmGUt9u4DfA/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 27",
-  },
+  // {
+  //   id: 27,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1xEF8oPHrpRLMmWRn_Fot6qmGUt9u4DfA/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 27",
+  // },
   {
     id: 28,
     url: convertToDirectImageUrl(
@@ -319,13 +319,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 33",
   },
-  {
-    id: 34,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1vybh2AY9vJaabH1HVwarEuyAdRDY-TXP/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 34",
-  },
+  // {
+  //   id: 34,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1vybh2AY9vJaabH1HVwarEuyAdRDY-TXP/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 34",
+  // },
   {
     id: 35,
     url: convertToDirectImageUrl(
@@ -333,13 +333,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 35",
   },
-  {
-    id: 36,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1fOPsxe0fWCHy_5UiPMWwTJo8waaEzUSc/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 36",
-  },
+  // {
+  //   id: 36,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1fOPsxe0fWCHy_5UiPMWwTJo8waaEzUSc/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 36",
+  // },
   {
     id: 37,
     url: convertToDirectImageUrl(
@@ -403,13 +403,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 45",
   },
-  {
-    id: 46,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1ysRfk_7ij68hrd-RUVMqOJDwtovCrJGR/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 46",
-  },
+  // {
+  //   id: 46,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1ysRfk_7ij68hrd-RUVMqOJDwtovCrJGR/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 46",
+  // },
   {
     id: 47,
     url: convertToDirectImageUrl(
@@ -466,13 +466,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 54",
   },
-  {
-    id: 55,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1PhXNexa2QnsiMsfxixZzHdTsk8GifpWn/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 55",
-  },
+  // {
+  //   id: 55,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1PhXNexa2QnsiMsfxixZzHdTsk8GifpWn/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 55",
+  // },
   {
     id: 56,
     url: convertToDirectImageUrl(
@@ -480,13 +480,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 56",
   },
-  {
-    id: 57,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1_VrksgtSyenhxLJwtbO8B_6QC6jSK0VT/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 57",
-  },
+  // {
+  //   id: 57,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1_VrksgtSyenhxLJwtbO8B_6QC6jSK0VT/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 57",
+  // },
   {
     id: 58,
     url: convertToDirectImageUrl(
@@ -494,13 +494,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 58",
   },
-  {
-    id: 59,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1y90DNZPtjypfN9oHLIfJS7e6_O-qQC4_/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 59",
-  },
+  // {
+  //   id: 59,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1y90DNZPtjypfN9oHLIfJS7e6_O-qQC4_/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 59",
+  // },
   {
     id: 60,
     url: convertToDirectImageUrl(
@@ -508,13 +508,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 60",
   },
-  {
-    id: 61,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1l9jkM7fYytWPf_SK7nSv8J73ybuNFauN/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 61",
-  },
+  // {
+  //   id: 61,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1l9jkM7fYytWPf_SK7nSv8J73ybuNFauN/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 61",
+  // },
   {
     id: 62,
     url: convertToDirectImageUrl(
@@ -578,13 +578,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 70",
   },
-  {
-    id: 71,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/116ng10_TZwP1WqkEOfUZM-EcPiMY2JrZ/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 71",
-  },
+  // {
+  //   id: 71,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/116ng10_TZwP1WqkEOfUZM-EcPiMY2JrZ/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 71",
+  // },
   {
     id: 72,
     url: convertToDirectImageUrl(
@@ -599,13 +599,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 73",
   },
-  {
-    id: 74,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/12wBt0ctXWhYjXqK_2k85R9ACQZ4J9ul2/view?usp=sharing"
-    ),
-    alt: "웨딩 사진 74",
-  },
+  // {
+  //   id: 74,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/12wBt0ctXWhYjXqK_2k85R9ACQZ4J9ul2/view?usp=sharing"
+  //   ),
+  //   alt: "웨딩 사진 74",
+  // },
   {
     id: 75,
     url: convertToDirectImageUrl(
@@ -662,13 +662,13 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 82",
   },
-  {
-    id: 83,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1W4cOuy814ecyLsCgnevpj1poustC48hk/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 83",
-  },
+  // {
+  //   id: 83,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1W4cOuy814ecyLsCgnevpj1poustC48hk/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 83",
+  // },
   {
     id: 84,
     url: convertToDirectImageUrl(
@@ -704,20 +704,20 @@ export const GALLERY_IMAGES = [
     ),
     alt: "웨딩 사진 88",
   },
-  {
-    id: 89,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1GTAD_R1zenzlOgflMeyrzsYsbasGTquW/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 89",
-  },
-  {
-    id: 90,
-    url: convertToDirectImageUrl(
-      "https://drive.google.com/file/d/1WI65SdqFHIiezXxUMiYawOb6iH0ThG8t/view?usp=drive_link"
-    ),
-    alt: "웨딩 사진 90",
-  },
+  // {
+  //   id: 89,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1GTAD_R1zenzlOgflMeyrzsYsbasGTquW/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 89",
+  // },
+  // {
+  //   id: 90,
+  //   url: convertToDirectImageUrl(
+  //     "https://drive.google.com/file/d/1WI65SdqFHIiezXxUMiYawOb6iH0ThG8t/view?usp=drive_link"
+  //   ),
+  //   alt: "웨딩 사진 90",
+  // },
   {
     id: 91,
     url: convertToDirectImageUrl(
@@ -738,5 +738,75 @@ export const GALLERY_IMAGES = [
       "https://drive.google.com/file/d/17Rnh5xvhqPMGRa-h-6J4ctAztIPv6mfC/view?usp=drive_link"
     ),
     alt: "웨딩 사진 93",
+  },
+  {
+    id: 94,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1MD22H8uObjjxE3nWYKz8KkAPatT4Cryi/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 94",
+  },
+  {
+    id: 95,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/193ln1dd6zRIMYVnVlugDW3zuuw1H7OlG/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 95",
+  },
+  {
+    id: 96,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1vqulNkcA4HJOqxswC62TZ6Ck68IPjXYW/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 96",
+  },
+  {
+    id: 97,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1ZOxyh_LS1W07H9zK5T6WG65B6JcNwd4i/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 97",
+  },
+  {
+    id: 98,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1K_B3Ycvvomkau0YMupcvJyHVaqd8dGG0/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 98",
+  },
+  {
+    id: 99,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1LJYg2xeez8Z42-O4tmxRjslwa3Bg4eie/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 99",
+  },
+  {
+    id: 100,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/13io8mqa5tPFurBOj_wEwhZjGkDZD2-jQ/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 100",
+  },
+  {
+    id: 101,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1xhZY5hW9hJZQYs0axoS9jFyn8lqZMB7V/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 101",
+  },
+  {
+    id: 102,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/1X7n8bqVsjNKZwMY6cAn9ZafS9Kb7T6Jm/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 102",
+  },
+  {
+    id: 103,
+    url: convertToDirectImageUrl(
+      "https://drive.google.com/file/d/15IDvK1U6ndVc4-4a2Pd5m0Hn25fJhQBD/view?usp=drive_link"
+    ),
+    alt: "웨딩 사진 103",
   },
 ];
