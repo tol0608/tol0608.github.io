@@ -1,14 +1,14 @@
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Calendar = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
-  const weddingDate = new Date('2025-11-09T13:00:00');
+  const weddingDate = new Date("2025-11-09T13:00:00");
   const today = new Date();
   const diffTime = Math.abs(weddingDate.getTime() - today.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -75,17 +75,13 @@ const Calendar = () => {
 
         <DDay>
           <span>우리의 결혼식이</span>
-          <strong>{diffDays}일</strong> 
+          <strong>{diffDays}일</strong>
           <span>남았습니다</span>
         </DDay>
 
         <TimeLocation>
-          <Time>
-            2025년 11월 9일 일요일 오후 1시
-          </Time>
-          <Location>
-            W웨딩 더에스웨딩홀
-          </Location>
+          <Time>2025년 11월 9일 일요일 오후 1시</Time>
+          <Location>W웨딩 더에스웨딩홀</Location>
         </TimeLocation>
       </motion.div>
     </Section>
@@ -143,7 +139,9 @@ const EmptyDay = styled.div`
 const DateCell = styled.div<{ $isWeddingDay?: boolean }>`
   padding: 8px;
   font-size: 0.9rem;
-  ${({ $isWeddingDay }) => $isWeddingDay && `
+  ${({ $isWeddingDay }) =>
+    $isWeddingDay &&
+    `
     background-color: #FF9999;
     color: white;
     border-radius: 50%;
@@ -155,10 +153,10 @@ const DDay = styled.div`
   margin: 32px 0;
   font-size: 1.1rem;
   line-height: 1.6;
-  
+
   strong {
     font-size: 1.6rem;
-    color: #FF9999;
+    color: #ff9999;
     margin: 0 8px;
     font-weight: 700;
   }
@@ -180,4 +178,4 @@ const Location = styled.p`
   color: #666;
 `;
 
-export default Calendar; 
+export default Calendar;

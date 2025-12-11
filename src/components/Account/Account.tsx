@@ -70,12 +70,6 @@ const Account = () => {
             </AccountItem>
           ))}
         </AccountList>
-
-        <Notice>
-          참석이 어려우신 분들을 위해
-          <br />
-          계좌번호를 기재하였습니다.
-        </Notice>
       </motion.div>
     </Section>
   );
@@ -156,14 +150,6 @@ const CopyButton = styled.button`
   &:hover {
     color: #666;
   }
-`;
-
-const Notice = styled.p`
-  text-align: center;
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.6;
 `;
 
 export default Account;

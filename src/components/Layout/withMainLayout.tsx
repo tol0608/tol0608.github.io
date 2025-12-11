@@ -47,7 +47,7 @@ const withMainLayout = (WrappedComponent: React.ComponentType) => {
 
       // 140초부터 시작, 무한 루프
       // audio.currentTime = 55.5;
-      audio.currentTime = 140;
+      audio.currentTime = 21;
       audio.loop = true;
       audio.volume = 0.15;
 

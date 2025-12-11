@@ -18,6 +18,7 @@ export interface SplitTextProps {
   rootMargin?: string;
   textAlign?: React.CSSProperties["textAlign"];
   onLetterAnimationComplete?: () => void;
+  fontSize?: string;
 }
 
 const SplitText: React.FC<SplitTextProps> = ({
@@ -32,6 +33,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   threshold = 0.1,
   rootMargin = "-100px",
   textAlign = "center",
+  fontSize = "",
   onLetterAnimationComplete,
 }) => {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -160,6 +162,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         display: "inline-block",
         whiteSpace: "normal",
         wordWrap: "break-word",
+        fontSize: fontSize,
       }}
     >
       {text}

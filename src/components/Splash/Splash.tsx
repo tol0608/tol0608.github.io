@@ -37,11 +37,10 @@ const Splash = ({ onComplete }: SplashProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <MainText>이재현 · 허정현</MainText>
-              <SubText>2025. 11. 09</SubText>
               <SplitText
-                text="우리 결혼해요!"
-                className="text-2xl font-semibold text-center"
+                text="축하해주셔서 감사합니다!"
+                className="text-center"
+                fontSize="30px"
                 delay={100}
                 duration={0.6}
                 ease="power3.out"
@@ -53,6 +52,7 @@ const Splash = ({ onComplete }: SplashProps) => {
                 textAlign="center"
                 onLetterAnimationComplete={handleAnimationComplete}
               />
+              <MainText>이재현 · 허정현 올림</MainText>
             </motion.div>
           </ContentWrapper>
         </SplashOverlay>
@@ -82,15 +82,10 @@ const ContentWrapper = styled.div`
 `;
 
 const MainText = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 1rem;
   color: #333;
-`;
-
-const SubText = styled.p`
-  font-size: 1rem;
-  color: #666;
 `;
 
 export default Splash;

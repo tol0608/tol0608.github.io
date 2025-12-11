@@ -1,16 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import mainImage from "../assets/img/gallery/sero9-toledit.jpg";
+import { MAIN_IMAGE_URL } from "../config/images";
 import Calendar from "../components/Calendar/Calendar";
-import Location from "../components/Location/Location";
 import Account from "../components/Account/Account";
 import Gallery from "../components/Gallery/Gallery";
-// 방명록 서버 연동 예정
-// import Guestbook from "../components/Guestbook/Guestbook";
-// 스크롤 이미지 추가 고민중
-// import HorizontalScroll from "../components/HorizontalScroll/HorizontalScroll";
 import { useRef } from "react";
-// import ScrollReveal from "../components/HorizontalScroll/ScrollReveal";
 
 const Home = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,7 +16,7 @@ const Home = () => {
       <MainImage>
         <ImageFrame>
           <motion.img
-            src={mainImage}
+            src={MAIN_IMAGE_URL}
             alt="메인 웨딩 이미지"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -31,92 +25,39 @@ const Home = () => {
           />
         </ImageFrame>
       </MainImage>
-      <TitleSection>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <SubTitle>WEDDING INVITATION</SubTitle>
-          {/* <Relation>신랑  신부</Relation> */}
-          <Names>이재현 · 허정현</Names>
-          <Date>2025. 11. 9. SUNDAY PM 1:00</Date>
-          <LocationView>W웨딩 더에스웨딩홀</LocationView>
-        </motion.div>
-      </TitleSection>
+
       <IntroSection ref={introRef}>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          "아홉살이 되었습니다. 우리의 사랑이요."
-          <br /> 9년이라는 시간 동안
-          <br /> 함께 웃고, 싸우고, 성장해온
-          <br /> 저희가 이제는 '연인'이라는 이름을 넘어
-          <br /> '부부'로 새 출발하려 합니다.
+          결혼식에 함께해주시고
+          <br /> 따뜻한 축하를 보내주셔서
+          <br /> 진심으로 감사드립니다.
         </motion.p>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          <br /> 오랜 시간 함께한 만큼,
-          <br /> 더 단단하게 앞으로도 서로의 인생을
-          <br /> 지켜줄 동반자가 되겠습니다.
+          <br /> 그날의 설렘과 기쁨이 담긴
+          <br /> 결혼식장에서 촬영된 소중한 순간들을
+          <br /> 여러분과 함께 나누고자 합니다.
         </motion.p>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          <br /> 저희의 새로운 시작을
-          <br /> 따뜻한 마음으로 지켜봐 주시고
-          <br /> 축복해 주시면 감사하겠습니다.
+          <br /> 함께 만들어준 아름다운 추억을
+          <br /> 사진으로 간직해 가시길 바랍니다.
         </motion.p>
-        {/* <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
-          서로 마주 보며 다져온 사랑을
-          <br />
-          이제 함께 한 곳을 바라보며
-          <br />
-          걸어가고자 합니다.
-          <br />
-          저희 두 사람이 사랑의 이름으로
-          <br />
-          지켜나갈 수 있도록
-          <br />
-          앞날을 축복해 주시면 감사하겠습니다.
-        </motion.p> */}
       </IntroSection>
-      {/* <HorizontalScroll 
-        triggerElement={introRef}
-        endElement={galleryRef}
-        containerRef={containerRef}
-      /> */}
-      {/* todo : 스크롤 텍스트 영역 다듬기 */}
-      {/* <ScrollTextSection>
-        <ScrollReveal
-          scrollContainerRef={containerRef}
-          baseOpacity={0}
-          enableBlur={true}
-          baseRotation={5}
-          blurStrength={10}
-          containerClassName="story-container"
-          textClassName="story-text"
-        >
-          Our Story 처음 만난 날부터 지금까지 The Proposal 서로를 향한 약속 Our
-          Future 함께할 미래
-        </ScrollReveal>
-      </ScrollTextSection> */}
+
       <Gallery ref={galleryRef} />
-      <Calendar />
-      <Location />
-      {/* 방명록 서버 연동 예정  */}
-      {/* <Guestbook /> */}
+      {/* <Calendar /> */}
+
       <Account />
     </Container>
   );
@@ -195,36 +136,6 @@ const ImageFrame = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-`;
-
-const TitleSection = styled.div`
-  text-align: center;
-  padding: 60px 20px;
-  background-color: #f9f9f9;
-`;
-
-const SubTitle = styled.h2`
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #666;
-  margin-bottom: 20px;
-`;
-
-const Names = styled.h1`
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 20px;
-`;
-
-const Date = styled.p`
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 10px;
-`;
-
-const LocationView = styled.p`
-  font-size: 16px;
-  color: #333;
 `;
 
 const IntroSection = styled.div`

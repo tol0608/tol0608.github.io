@@ -106,21 +106,21 @@ const Intro = () => {
           transition={{ delay: 1.2, duration: 1 }}
         >
           <IntroText>
-            "서로의 마음을 알아가는 시간이었습니다."
+            결혼식에 함께해주시고
+            <br />
+            따뜻한 축하를 보내주셔서 감사합니다.
             <br />
             <br />
-            처음 만난 그 순간부터 지금까지
+            그날의 설렘과 기쁨이 담긴
             <br />
-            함께 웃고, 함께 울며, 함께 성장해온
+            결혼식장에서 촬영된 소중한 순간들을
             <br />
-            저희 두 사람이 이제는 한 걸음 더 나아가
-            <br />
-            '부부'라는 이름으로 새로운 여정을 시작하려 합니다.
+            여러분과 함께 나누고자 합니다.
             <br />
             <br />
-            저희의 특별한 순간을 함께 나누어 주시고
+            함께 만들어준 아름다운 추억을
             <br />
-            앞으로의 길을 축복해 주시면 감사하겠습니다.
+            사진으로 간직해 가시길 바랍니다.
           </IntroText>
         </motion.div>
 
@@ -129,7 +129,7 @@ const Intro = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6, duration: 1 }}
         >
-          <QuestionText>청첩장에 입장하시겠습니까?</QuestionText>
+          <QuestionText>사진첩에 입장하시겠습니까?</QuestionText>
         </motion.div>
 
         <motion.button

@@ -5,67 +5,14 @@ import { useInView } from "react-intersection-observer";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { GALLERY_IMAGES } from "../../config/images";
 
-import sero3 from "../../assets/img/gallery/compressed/sero3-toledit.jpg";
-import sero4 from "../../assets/img/gallery/compressed/sero4-toledit.jpg";
-import sero5 from "../../assets/img/gallery/compressed/sero5-toledit.jpg";
-import sero6 from "../../assets/img/gallery/compressed/sero6-toledit.jpg";
-import sero7 from "../../assets/img/gallery/compressed/sero7-toledit.jpg";
-import sero8 from "../../assets/img/gallery/compressed/sero8-toledit.jpg";
-import sero9 from "../../assets/img/gallery/compressed/sero9-toledit.jpg";
-import sero10 from "../../assets/img/gallery/compressed/sero10-toledit.jpg";
-import sero11 from "../../assets/img/gallery/compressed/sero11.jpg";
-import sero12 from "../../assets/img/gallery/compressed/sero12.jpg";
-import sero13 from "../../assets/img/gallery/compressed/IMG_1732.JPG";
-import sero14 from "../../assets/img/gallery/compressed/IMG_1733.JPG";
-import studio1 from "../../assets/img/gallery/compressed/HCG_0079-toledit.jpg";
-import studio2 from "../../assets/img/gallery/compressed/HCG_0301-toledit.jpg";
-import studio3 from "../../assets/img/gallery/compressed/HCG_0597-toledit.jpg";
-import studio4 from "../../assets/img/gallery/compressed/HCG_0564-toledit.jpg";
-import studio5 from "../../assets/img/gallery/compressed/HCG_0626-toledit.jpg";
-import studio6 from "../../assets/img/gallery/compressed/HCG_0840-toledit.jpg";
-import studio7 from "../../assets/img/gallery/compressed/HCG_0025-toledit 2.jpg";
-import studio8 from "../../assets/img/gallery/compressed/HCG_0678-toledit.jpg";
-import studio9 from "../../assets/img/gallery/compressed/HCG_0766-toledit.jpg";
-import studio10 from "../../assets/img/gallery/compressed/HCG_0533-toledit.jpg";
-import studio11 from "../../assets/img/gallery/compressed/HCG_0517-toledit.jpg";
-import studio12 from "../../assets/img/gallery/compressed/HCG_0328-toledit.jpg";
-import new1 from "../../assets/img/gallery/compressed/new1.JPG";
-import new2 from "../../assets/img/gallery/compressed/new2.JPG";
-import new3 from "../../assets/img/gallery/compressed/new3.JPG";
-import new4 from "../../assets/img/gallery/compressed/new4.JPG";
-
-// 이미지 목록 (실제 이미지 경로로 교체 필요)
-const images = [
-  { id: 3, src: sero14, alt: "웨딩 사진 3" },
-  { id: 4, src: sero3, alt: "웨딩 사진 4" },
-  { id: 5, src: sero5, alt: "웨딩 사진 5" },
-  { id: 6, src: sero6, alt: "웨딩 사진 6" },
-  { id: 7, src: sero7, alt: "웨딩 사진 7" },
-  { id: 9, src: sero9, alt: "웨딩 사진 9" },
-  { id: 10, src: sero10, alt: "웨딩 사진 10" },
-  { id: 8, src: sero8, alt: "웨딩 사진 8" },
-  { id: 11, src: sero11, alt: "웨딩 사진 11" },
-  { id: 12, src: sero13, alt: "웨딩 사진 12" },
-  { id: 13, src: sero12, alt: "웨딩 사진 13" },
-  { id: 14, src: sero4, alt: "웨딩 사진 14" },
-  { id: 15, src: new1, alt: "웨딩 사진 24" },
-  { id: 16, src: new2, alt: "웨딩 사진 25" },
-  { id: 17, src: new3, alt: "웨딩 사진 26" },
-  { id: 18, src: new4, alt: "웨딩 사진 27" },
-  { id: 19, src: studio1, alt: "웨딩 사진 15" },
-  { id: 20, src: studio7, alt: "웨딩 사진 18" },
-  { id: 21, src: studio2, alt: "웨딩 사진 16" },
-  { id: 22, src: studio12, alt: "웨딩 사진 25" },
-  { id: 23, src: studio3, alt: "웨딩 사진 17" },
-  { id: 24, src: studio4, alt: "웨딩 사진 16" },
-  { id: 25, src: studio5, alt: "웨딩 사진 17" },
-  { id: 26, src: studio6, alt: "웨딩 사진 18" },
-  { id: 27, src: studio8, alt: "웨딩 사진 20" },
-  { id: 28, src: studio9, alt: "웨딩 사진 21" },
-  { id: 29, src: studio10, alt: "웨딩 사진 22" },
-  { id: 30, src: studio11, alt: "웨딩 사진 23" },
-];
+// 이미지 목록 (외부 호스팅 URL 사용)
+const images = GALLERY_IMAGES.map((img) => ({
+  id: img.id,
+  src: img.url,
+  alt: img.alt,
+}));
 
 interface GalleryProps {
   ref?: React.RefObject<HTMLElement>;
@@ -120,19 +67,23 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((_, ref) => {
     document.body.style.overflow = "auto";
   };
 
-  const goToNext = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % images.length);
-    }
-  };
+  const goToNext = useCallback(() => {
+    setSelectedImageIndex((prev) => {
+      if (prev !== null) {
+        return (prev + 1) % images.length;
+      }
+      return prev;
+    });
+  }, []);
 
-  const goToPrev = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex(
-        selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1
-      );
-    }
-  };
+  const goToPrev = useCallback(() => {
+    setSelectedImageIndex((prev) => {
+      if (prev !== null) {
+        return prev === 0 ? images.length - 1 : prev - 1;
+      }
+      return prev;
+    });
+  }, []);
 
   // 키보드 이벤트 처리
   useEffect(() => {
@@ -150,7 +101,7 @@ const Gallery = forwardRef<HTMLElement, GalleryProps>((_, ref) => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImageIndex]);
+  }, [selectedImageIndex, goToNext, goToPrev]);
 
   // 터치/마우스 이벤트 처리
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
